@@ -7,4 +7,6 @@ pluginManagement {
     }
 }
 
-rootProject.name = "builders"
+rootProject.name = "applikation-runtime"
+
+includeBuild("../gradle-plugins")

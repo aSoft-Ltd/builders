@@ -14,7 +14,7 @@ repositories {
 object versions {
     val kotlin = "1.4.10"
     val gradle = "6.7"
-    val asoft_build_src = "1.0.0"
+    val builders = "1.0.0"
     val android_build_tools = "4.1.0"
     val nexus_staging = "0.22.0"
 }
@@ -53,7 +53,7 @@ pluginBundle {
 }
 
 group = "tz.co.asoft"
-version = versions.asoft_build_src
+version = versions.builders
 
 defaultTasks("jar")
 
