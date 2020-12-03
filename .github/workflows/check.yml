@@ -182,6 +182,9 @@ jobs:
       - name: Clean applikation-runtime
         run: ./gradlew clean
         working-directory: ./applikation-runtime
+      - name: Running jsPackageJson for applikation-runtime
+        run: ./gradlew jsPackageJson
+        working-directory: ./applikation-runtime
       - name: Making gradlew executable
         run: chmod +x ./gradlew
         working-directory: ./samples/applikation-samples/multiplatform-applikation
