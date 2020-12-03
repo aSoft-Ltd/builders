@@ -11,14 +11,6 @@ repositories {
     mavenCentral()
 }
 
-object versions {
-    val kotlin = "1.4.10"
-    val gradle = "6.7"
-    val builders = "1.0.0"
-    val android_build_tools = "4.1.0"
-    val nexus_staging = "0.22.0"
-}
-
 gradlePlugin {
     plugins {
         val applikation by creating {
@@ -54,6 +46,13 @@ pluginBundle {
 
 group = "tz.co.asoft"
 version = versions.builders
+
+object versions {
+    val kotlin = "1.4.20"
+    val builders = "1.0.0"
+    val android_build_tools = "4.1.0"
+    val nexus_staging = "0.22.0"
+}
 
 defaultTasks("jar")
 

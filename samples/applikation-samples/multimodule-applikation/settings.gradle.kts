@@ -16,6 +16,6 @@ pluginManagement {
 }
 
 includeBuild("../../../gradle-plugins")
-includeBuild("../../../konfig-runtime")
+includeBuild("../../../applikation-runtime")
 include(":todo-core")
 include(":todo-browser")
