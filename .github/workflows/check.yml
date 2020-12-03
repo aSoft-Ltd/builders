@@ -132,7 +132,7 @@ jobs:
       - name: Building samples/applikation-samples/browser-applikation
         run: |
           chmod +x ./gradlew
-          ./gradlew :webpackRelease
+          ./gradlew :clean :webpackRelease
         working-directory: ./samples/applikation-samples/browser-applikation
 
   checking-applikation-samples-desktop-applikation:
@@ -174,7 +174,7 @@ jobs:
       - name: Making gradlew executable
         run: chmod +x ./gradlew
         working-directory: ./samples/applikation-samples/multiplatform-applikation
-      - name: Building browser applikation
+      - name: Bundling browser applikation
         run: ./gradlew :clean :webpackJsRelease
         working-directory: ./samples/applikation-samples/multiplatform-applikation
       - name: Building android applikation
