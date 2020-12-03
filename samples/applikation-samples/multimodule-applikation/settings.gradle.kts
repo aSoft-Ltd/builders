@@ -16,6 +16,7 @@ pluginManagement {
 }
 
 includeBuild("../../../gradle-plugins")
-includeBuild("../../../applikation-runtime")
+include(":applikation-runtime")
+project(":applikation-runtime").projectDir = File("../../../applikation-runtime")
 include(":todo-core")
 include(":todo-browser")

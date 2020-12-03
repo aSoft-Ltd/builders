@@ -47,5 +47,5 @@ kotlin {
 }
 
 dependencies {
-    implementation("tz.co.asoft:applikation-runtime:0.0.1")
+    implementation(project(":applikation-runtime"))
 }
