@@ -129,6 +129,11 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Clean application-runtime
+        run: |
+          chmod +x ./gradlew
+          ./gradlew clean
+        working-directory: ./application-runtime
       - name: Building samples/applikation-samples/browser-applikation
         run: |
           chmod +x ./gradlew
@@ -171,6 +176,11 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Clean application-runtime
+        run: |
+          chmod +x ./gradlew
+          ./gradlew clean
+        working-directory: ./application-runtime
       - name: Making gradlew executable
         run: chmod +x ./gradlew
         working-directory: ./samples/applikation-samples/multiplatform-applikation
@@ -199,6 +209,11 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Clean application-runtime
+        run: |
+          chmod +x ./gradlew
+          ./gradlew clean
+        working-directory: ./application-runtime
       - name: Building samples/applikation-samples/multimodule-applikation:todo-browser
         run: |
           chmod +x ./gradlew
