@@ -135,7 +135,7 @@ jobs:
           ./gradlew :webpackRelease
         working-directory: ./samples/applikation-samples/browser-applikation
 
-  checking-applikation-samples-desktop:
+  checking-applikation-samples-desktop-applikation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -173,10 +173,13 @@ jobs:
             ${{ runner.os }}-gradle-
       - name: Making gradlew executable
         run: chmod +x ./gradlew
+        working-directory: ./samples/applikation-samples/multiplatform-applikation
       - name: Building android applikation
         run: ./gradlew :assembleDebug
+        working-directory: ./samples/applikation-samples/multiplatform-applikation
       - name: Building desktop applikation
         run: ./gradlew :fatJarJvmRelease
+        working-directory: ./samples/applikation-samples/multiplatform-applikation
       - name: Building browser applikation
         run: ./gradlew :webpackJsRelease
         working-directory: ./samples/applikation-samples/multiplatform-applikation
