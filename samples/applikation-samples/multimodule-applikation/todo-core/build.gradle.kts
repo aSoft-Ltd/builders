@@ -34,7 +34,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":applikation-runtime"))
+                api("tz.co.asoft:applikation-runtime:0.0.2")
             }
         }
     }

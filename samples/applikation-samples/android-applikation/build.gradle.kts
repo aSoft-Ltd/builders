@@ -40,5 +40,5 @@ applikation {
 }
 
 dependencies {
-    implementation(project(":applikation-runtime"))
+    implementation("tz.co.asoft:applikation-runtime:0.0.1")
 }

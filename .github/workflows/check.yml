@@ -140,7 +140,7 @@ jobs:
           ./gradlew :clean :webpackRelease
         working-directory: ./samples/applikation-samples/browser-applikation
 
-  checking-applikation-samples-desktop-applikation:
+  checking-applikation-samples-desktop:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -161,7 +161,7 @@ jobs:
           ./gradlew :installDistRelease
         working-directory: ./samples/applikation-samples/desktop-applikation
 
-  checking-applikation-samples-multiplatform-applikation:
+  checking-applikation-samples-multiplatform:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -198,7 +198,7 @@ jobs:
         run: ./gradlew :fatJarJvmRelease
         working-directory: ./samples/applikation-samples/multiplatform-applikation
 
-  checking-applikation-samples-multimodule-applikation:
+  checking-applikation-samples-multimodule:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

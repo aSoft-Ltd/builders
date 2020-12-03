@@ -16,5 +16,4 @@ pluginManagement {
 }
 
 includeBuild("../../../gradle-plugins")
-include(":applikation-runtime")
-project(":applikation-runtime").projectDir = File("../../../applikation-runtime")
+includeBuild("../../../applikation-runtime")
