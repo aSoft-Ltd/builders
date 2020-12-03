@@ -174,14 +174,14 @@ jobs:
       - name: Making gradlew executable
         run: chmod +x ./gradlew
         working-directory: ./samples/applikation-samples/multiplatform-applikation
+      - name: Building browser applikation
+        run: ./gradlew :clean :webpackJsRelease
+        working-directory: ./samples/applikation-samples/multiplatform-applikation
       - name: Building android applikation
         run: ./gradlew :assembleDebug
         working-directory: ./samples/applikation-samples/multiplatform-applikation
       - name: Building desktop applikation
         run: ./gradlew :fatJarJvmRelease
-        working-directory: ./samples/applikation-samples/multiplatform-applikation
-      - name: Building browser applikation
-        run: ./gradlew :webpackJsRelease
         working-directory: ./samples/applikation-samples/multiplatform-applikation
 
   checking-applikation-samples-multimodule-applikation:
@@ -199,10 +199,10 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-      - name: Building samples/applikation-samples/desktop-applikation
+      - name: Building samples/applikation-samples/multimodule-applikation:todo-browser
         run: |
           chmod +x ./gradlew
-          ./gradlew :todo-browser:webpackRelease
+          ./gradlew :todo-browser:clean :todo-browser:webpackRelease
         working-directory: ./samples/applikation-samples/multimodule-applikation
 
   building-applikation-runtime:
