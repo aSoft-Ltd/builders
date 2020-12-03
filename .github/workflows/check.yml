@@ -176,10 +176,11 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+        working-directory: ./applikation-runtime
       - name: Clean applikation-runtime
-        run: |
-          chmod +x ./gradlew
-          ./gradlew clean
+        run: ./gradlew clean
         working-directory: ./applikation-runtime
       - name: Making gradlew executable
         run: chmod +x ./gradlew
