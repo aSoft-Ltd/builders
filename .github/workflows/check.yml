@@ -137,7 +137,7 @@ jobs:
       - name: Building samples/applikation-samples/browser-applikation
         run: |
           chmod +x ./gradlew
-          ./gradlew :clean :build
+          ./gradlew :clean :jsSourcesJar
         working-directory: ./samples/applikation-samples/browser-applikation
 
   checking-applikation-samples-desktop:
@@ -221,7 +221,7 @@ jobs:
       - name: Building samples/applikation-samples/multimodule-applikation:todo-browser
         run: |
           chmod +x ./gradlew
-          ./gradlew :todo-browser:clean :todo-browser:webpackRelease
+          ./gradlew :todo-browser:clean :todo-browser:jsSourcesJar
         working-directory: ./samples/applikation-samples/multimodule-applikation
 
   building-applikation-runtime:

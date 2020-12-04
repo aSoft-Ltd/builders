@@ -34,7 +34,6 @@ kotlin {
                 outputFileName = "main.js"
                 cssSupport.enabled = true
             }
-            testTask { enabled = false }
         }
         binaries.executable()
     }

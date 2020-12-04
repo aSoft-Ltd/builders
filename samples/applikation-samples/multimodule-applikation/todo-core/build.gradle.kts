@@ -28,9 +28,7 @@ kotlin {
     }
 
     js(IR) {
-        browser{
-            testTask { enabled = false }
-        }
+        browser()
     }
 
     sourceSets {
