@@ -1,8 +1,5 @@
 object versions {
-    val kotlin = "1.4.10"
-
-    object kotlinx {
-        val serialization = "1.0.1"
-        val coroutines = "1.4.1"
-    }
+    val kotlin = "1.4.20"
+    val builders = "1.0.0"
+    val android_build_tools = "4.1.0"
 }

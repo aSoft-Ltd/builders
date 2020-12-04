@@ -16,4 +16,4 @@ pluginManagement {
 }
 
 includeBuild("../../../gradle-plugins")
-includeBuild("../../../konfig-runtime")
+includeBuild("../../../applikation-runtime")

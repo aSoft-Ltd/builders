@@ -1,14 +1,14 @@
 plugins {
     id("com.android.library") version "4.1.0"
-    kotlin("multiplatform") version "1.4.10"
+    kotlin("multiplatform") version "1.4.20"
     id("io.codearte.nexus-staging") version "0.22.0"
-    id("tz.co.asoft.library") version "0.0.7"
+    id("tz.co.asoft.library") version "1.0.0"
     signing
 }
 
 object vers {
     object asoft {
-        val konfig = "0.0.3"
+        val builders = "0.0.1"
         val mapper = "0.0.1"
     }
 }
@@ -25,6 +25,6 @@ kotlin {
 }
 
 aSoftLibrary(
-    version = vers.asoft.konfig,
+    version = vers.asoft.builders,
     description = "A Library to help reading configurations"
 )
