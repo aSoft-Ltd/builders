@@ -49,7 +49,7 @@ version = versions.builders
 
 object versions {
     val kotlin = "1.4.20"
-    val builders = "1.1.0"
+    val builders = "1.1.1"
     val android_build_tools = "4.1.0"
     val nexus_staging = "0.22.0"
 }
