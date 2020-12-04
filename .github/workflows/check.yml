@@ -221,7 +221,7 @@ jobs:
       - name: Building samples/applikation-samples/multimodule-applikation:todo-browser
         run: |
           chmod +x ./gradlew
-          ./gradlew :todo-browser:clean :todo-browser:build
+          ./gradlew :todo-browser:clean :todo-browser:webpackRelease
         working-directory: ./samples/applikation-samples/multimodule-applikation
 
   building-applikation-runtime:
