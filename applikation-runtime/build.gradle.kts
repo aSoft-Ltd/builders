@@ -8,7 +8,7 @@ plugins {
 
 object vers {
     object asoft {
-        val builders = "0.0.1"
+        val builders = "1.1.0"
         val mapper = "0.0.1"
     }
 }
