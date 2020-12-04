@@ -51,8 +51,8 @@ jobs:
         run: chmod +x ./gradlew
         working-directory: ./applikation-runtime
       - name: Publish applikation-runtime
-        run: ./gradlew publish
+        run: ./gradlew :publish
         working-directory: ./applikation-runtime
-      - name: Publish applikation-runtime
-        run: ./gradlew closeAndReleaseRepository
+      - name: Closing and releasing repository
+        run: ./gradlew :closeAndReleaseRepository
         working-directory: ./applikation-runtime
