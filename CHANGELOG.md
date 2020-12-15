@@ -1,3 +1,13 @@
+# 1.2.0 : 2020.12.15
+## New Features
+- [x] Provide easy lib configurations
+- [x] enable optional signgings
+- [x] Add `aSoftOSSLibrary` and `aSoftCSSLibrary` together with `Library` functions
+- [x] Add `kotlinx(module,version)` function
+- [x] Add `maven(url = "https://kotlin.bintray.com/kotlinx/")` to publicRepos
+- [x] make the `applikation` plugin add publicRepos automatically the same way the `library` plugin does
+- [x] add `fun PluginDependenciesSpec.asoft(plugin: String) = id("tz.co.asoft.$plugin")`
+
 # 1.0.0
 ## Build Src
 - Updated to gradle version 6.7.1
