@@ -10,6 +10,7 @@ fun KotlinJvmTarget.targetJava(version: String = "1.8") = compilations.all {
     }
 }
 
+@Deprecated("Do no use this")
 fun Project.targetJava(version: String = "1.8") = tasks.withType(KotlinCompile::class).all {
     kotlinOptions {
         jvmTarget = version

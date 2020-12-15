@@ -6,5 +6,6 @@ fun RepositoryHandler.publicRepos() {
     google()
     jcenter()
     maven(url = "https://dl.bintray.com/kotlin/kotlin-js-wrappers")
+    maven(url = "https://kotlin.bintray.com/kotlinx/")
     mavenCentral()
 }

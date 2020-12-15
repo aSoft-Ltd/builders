@@ -45,12 +45,12 @@ pluginBundle {
 }
 
 group = "tz.co.asoft"
-version = versions.builders
+version = versions.asoft_builders
 
 object versions {
-    val kotlin = "1.4.20"
-    val builders = "1.1.1"
-    val android_build_tools = "4.1.0"
+    val kotlin = "1.4.21"
+    val asoft_builders = "1.2.0"
+    val agp = "4.1.0"
     val nexus_staging = "0.22.0"
 }
 
@@ -70,7 +70,7 @@ artifacts {
 }
 
 dependencies {
-    api("com.android.tools.build:gradle:${versions.android_build_tools}")
+    api("com.android.tools.build:gradle:${versions.agp}")
     api("org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}")
     api("org.jetbrains.kotlin:kotlin-serialization:${versions.kotlin}")
     api("io.codearte.gradle.nexus:gradle-nexus-staging-plugin:${versions.nexus_staging}")

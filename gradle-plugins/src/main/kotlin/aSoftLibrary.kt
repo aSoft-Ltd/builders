@@ -1,6 +1,12 @@
 import org.gradle.api.Project
+import org.gradle.api.publish.PublishingExtension
 
-fun Project.aSoftLibrary(
+fun Project.aSoftCSSLibrary(
+    version: String,
+    config: PublishingExtension.() -> Unit = {}
+) = KotlinLibrary("tz.co.asoft", version, config)
+
+fun Project.aSoftOSSLibrary(
     version: String,
     description: String,
     url: String = "https://github.com/aSoft-Ltd/$name",
@@ -10,7 +16,7 @@ fun Project.aSoftLibrary(
     licenseUrl: String = "https://github.com/aSoft-Ltd/$name/blob/master/LICENSE",
     developerId: String = "andylamax",
     developerName: String = "Anderson Lameck"
-) = KotlinLibrary(
+) = MavenLibrary(
     "tz.co.asoft",
     version,
     description,
