@@ -21,9 +21,17 @@ private fun Project.createKarmaTimeoutFile(testTimeout: Int) {
 }
 
 /**
+ * @param tesTimeout in milliseconds
+ */
+fun KotlinJsTargetDsl.library(tesTimeout: Int = 10000, forBrowser: Boolean = true, forNodeJs: Boolean = true) {
+    enableTesting(tesTimeout, forBrowser, forNodeJs)
+}
+
+
+/**
  * @param timeout in milliseconds
  */
-fun KotlinJsTargetDsl.enableTesting(timeout: Int, forBrowser: Boolean = true, forNodeJs: Boolean = true) {
+fun KotlinJsTargetDsl.enableTesting(timeout: Int = 10000, forBrowser: Boolean = true, forNodeJs: Boolean = true) {
     project.createKarmaTimeoutFile(timeout)
     if (forBrowser) browser {}
     if (forNodeJs) nodejs {
