@@ -23,7 +23,7 @@ fun KotlinMultiplatformExtension.multiplatformApplication(
     }
 
     if (forBrowser || forNodeJs) js(IR) {
-        jsApplication(testTimeout, forNodeJs)
+        application(testTimeout, forNodeJs)
     }
 }
 

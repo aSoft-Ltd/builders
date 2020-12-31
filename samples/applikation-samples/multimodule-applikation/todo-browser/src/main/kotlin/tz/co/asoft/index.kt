@@ -1,10 +1,13 @@
 package tz.co.asoft
 
 import kotlinx.browser.document
+import kotlinx.html.dom.append
+import kotlinx.html.js.pre
 
 fun main() {
     console.log("Works")
     val konfig = konfig()
-    val pckg = konfig["package"]
-    document.getElementById("root")?.outerHTML = pckg.toString()
+    document.getElementById("root")?.append {
+        pre { +Mapper { prettyPrint = true }.encodeToString(konfig) }
+    }
 }

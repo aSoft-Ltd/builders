@@ -38,7 +38,7 @@ fun KotlinJsTargetDsl.enableTesting(timeout: Int, forBrowser: Boolean = true, fo
 /**
  * @param testTimeout if null, testing is disabled
  */
-fun KotlinJsTargetDsl.jsApplication(testTimeout: Int? = null, withNodeJs: Boolean = true) {
+fun KotlinJsTargetDsl.application(testTimeout: Int? = null, withNodeJs: Boolean = false) {
     browser {
         commonWebpackConfig {
             cssSupport.enabled = true
