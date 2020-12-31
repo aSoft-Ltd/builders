@@ -10,10 +10,14 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
         val text = findViewById<TextView>(R.id.text)
-        val kfg = konfig()
-        val json = Mapper.encodeToString(kfg)
-
-        val change: Int by kfg
-        text.text = "$json\n\nChange: $change"
+        try {
+            val kfg = konfig()
+            val json = Mapper { prettyPrint = true }.encodeToString(kfg)
+            println("Works")
+            val name: String by kfg
+            text.text = "${name.capitalize()} Konfig $name\n\n\n$json"
+        } catch (e: Throwable) {
+            text.text = "${e.message}\n\n${e.cause?.message}\n\n${e.stackTraceToString()}"
+        }
     }
 }

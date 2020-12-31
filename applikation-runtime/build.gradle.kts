@@ -7,7 +7,7 @@ plugins {
 }
 
 kotlin {
-    universalLib()
+    multiplatformLib(forAndroid = true)
     sourceSets {
         val commonMain by getting {
             dependencies {
