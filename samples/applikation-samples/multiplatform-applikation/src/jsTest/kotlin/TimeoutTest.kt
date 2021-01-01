@@ -5,7 +5,7 @@ import kotlin.test.Test
 
 class TimeoutTest {
     @Test
-    @Ignoregit
+    @Ignore
     fun should_stay_for_at_least_ten_seconds() = asyncTest {
         console.log("Testing for a long time")
         delay(9500)
