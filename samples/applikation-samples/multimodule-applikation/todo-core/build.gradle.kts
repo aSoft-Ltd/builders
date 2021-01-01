@@ -1,40 +1,17 @@
 plugins {
-    id("com.android.library")
     kotlin("multiplatform")
-}
-
-repositories {
-    google()
-    jcenter()
-}
-
-android {
-    configureAndroid("src/androidMain")
-    defaultConfig {
-        minSdk = 18
-    }
+    id("tz.co.asoft.library")
 }
 
 group = "tz.co.asoft"
 version = "2020.2"
 
 kotlin {
-    android {
-        targetJava("1.8")
-    }
-
-    jvm {
-        targetJava("1.8")
-    }
-
-    js(IR) {
-        browser()
-    }
-
+    multiplatformLib()
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api("tz.co.asoft:applikation-runtime:0.0.2")
+                api(asoft("applikation-runtime", "1.2.0"))
             }
         }
     }

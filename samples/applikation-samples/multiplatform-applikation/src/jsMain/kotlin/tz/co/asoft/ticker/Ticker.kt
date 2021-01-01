@@ -6,8 +6,11 @@ import react.*
 import react.dom.br
 import styled.*
 
-private class Ticker(p: Props) : RComponent<Ticker.Props, Ticker.State>(p), CoroutineScope by CoroutineScope(SupervisorJob()) {
+@DslMarker
+annotation class JsView
 
+@JsExport
+class Ticker(p: Props) : RComponent<Ticker.Props, Ticker.State>(p), CoroutineScope by CoroutineScope(SupervisorJob()) {
     class Props(val config: TickConfig) : RProps
     class State(var config: TickConfig, var ui: TickerUIState) : RState
 
@@ -119,6 +122,7 @@ private class Ticker(p: Props) : RComponent<Ticker.Props, Ticker.State>(p), Coro
     }
 }
 
+@JsView
 fun RBuilder.Ticker(
         dif: Int = 1,
         startAt: Int = 0,

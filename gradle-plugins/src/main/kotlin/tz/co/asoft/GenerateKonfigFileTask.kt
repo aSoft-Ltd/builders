@@ -13,15 +13,15 @@ import java.io.File
 
 open class GenerateKonfigFileTask : DefaultTask() {
     companion object {
-        const val DEFAULT_KONFIG_FILE_NAME = "tz.co.asoft.konfig.json"
-        fun defaultFolderLocation(project: Project, konfig: Konfig, mppTarget: KotlinTarget?) :File {
+        const val DEFAULT_KONFIG_FILE_NAME = "tz.co.asoft.konfig"
+        fun defaultFolderLocation(project: Project, konfig: Konfig, mppTarget: KotlinTarget?): File {
             val build = project.buildDir.absolutePath
             return when {
                 project.plugins.hasPlugin("org.jetbrains.kotlin.jvm") -> "$build/resources/main"
                 project.plugins.hasPlugin("org.jetbrains.kotlin.js") -> "$build/resources/main"
-                project.plugins.hasPlugin("org.jetbrains.kotlin.android") -> "$build/intermediates/merged_assets/${konfig.name}/out"
+                project.plugins.hasPlugin("org.jetbrains.kotlin.android") -> "$build/intermediates/konfigs"//"$build/intermediates/merged_assets/${konfig.name}/out"
                 project.plugins.hasPlugin("org.jetbrains.kotlin.multiplatform") -> when (mppTarget) {
-                    is KotlinAndroidTarget -> "$build/intermediates/merged_assets/${konfig.name}/out"
+                    is KotlinAndroidTarget -> "$build/intermediates/konfigs"//"$build/intermediates/merged_assets/${konfig.name}/out"
                     is KotlinJvmTarget -> "$build/processedResources/${mppTarget.name}/main"
                     is KotlinJsTarget -> "$build/resources/${mppTarget.name}"
                     is KotlinJsIrTarget -> "$build/resources/${mppTarget.name}"
@@ -36,22 +36,48 @@ open class GenerateKonfigFileTask : DefaultTask() {
         group = "konfig"
     }
 
-    @Internal
+    @Input
     var konfig = Konfig("default", Konfig.Type.DEBUG, mapOf("name" to "default"))
 
     @Internal
     var mppTarget: KotlinTarget? = null
+
+    @get:InputDirectory
+    val konfigDir: File
+        get() = File(project.buildDir, "konfigs").apply { mkdirs() }
+
+    private val konfigFile
+        get() = File(konfigDir, "$DEFAULT_KONFIG_FILE_NAME.${konfig.name}.json")
 
     @get:OutputDirectory
     val outputDir: File
         get() = defaultFolderLocation(project, konfig, mppTarget)
 
     @get:OutputFile
-    val outputFile
-        get() = File(outputDir, DEFAULT_KONFIG_FILE_NAME)
+    val outputFile: File
+        get() = File(outputDir, "$DEFAULT_KONFIG_FILE_NAME.json")
+
+    private val Konfig.json get() = JsonBuilder(values + ("name" to name)).toPrettyString()
+
+    private fun File.readJson(): String? {
+        if (!canRead()) return null
+        return readText()
+    }
+
+    fun generate() {
+//        val file = if (outputDir.name.endsWith("out")) {
+//            outputFile
+//        } else {
+//            konfigFile
+//        }
+        if (konfigFile.readJson() != konfig.json) konfigFile.writeText(konfig.json)
+    }
 
     @TaskAction
-    fun generate() {
-        outputFile.writeText(JsonBuilder(konfig.values + ("name" to konfig.name)).toPrettyString())
+    fun doAction() {
+        project.copy {
+            from(konfigFile) { rename { "$DEFAULT_KONFIG_FILE_NAME.json" } }
+            into(outputDir)
+        }
     }
 }

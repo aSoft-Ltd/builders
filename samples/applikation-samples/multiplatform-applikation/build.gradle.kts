@@ -4,19 +4,33 @@ plugins {
     id("tz.co.asoft.applikation")
 }
 
-repositories {
-    google()
-    jcenter()
-}
-
 android {
     configureAndroid("src/androidMain")
     defaultConfig {
         minSdk = 18
     }
-}
 
-targetJava("1.8")
+    buildTypes {
+        val debug by getting {
+            setApplicationIdSuffix("debug")
+            manifestPlaceholders(mapOf("appName" to "Konfig Test Debug"))
+            minifyEnabled(false)
+        }
+        val staging by creating {
+            setApplicationIdSuffix("staging")
+            initWith(debug)
+            minifyEnabled(false)
+            manifestPlaceholders(mapOf("appName" to "Konfig Test Staging"))
+            setMatchingFallbacks("release")
+        }
+        val release by getting {
+            initWith(debug)
+            minifyEnabled(false)
+            manifestPlaceholders(mapOf("appName" to "Konfig"))
+            setMatchingFallbacks("release")
+        }
+    }
+}
 
 group = "tz.co.asoft"
 version = "2020.2"
@@ -43,23 +57,11 @@ applikation {
 }
 
 kotlin {
-    android {
-        targetJava("1.8")
-    }
-
-    jvm {
-        targetJava("1.8")
-    }
-
-    js(IR) {
-        browser()
-        binaries.executable()
-    }
-
+    multiplatformApplication(forAndroid = true, testTimeout = 10000)
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("tz.co.asoft:applikation-runtime:0.0.1")
+                implementation("tz.co.asoft:applikation-runtime:*")
             }
         }
 
@@ -69,6 +71,12 @@ kotlin {
                 implementation("org.jetbrains:kotlin-react:17.0.0-pre.129-kotlin-1.4.20")
                 implementation("org.jetbrains:kotlin-styled:5.2.0-pre.129-kotlin-1.4.20")
                 implementation("org.jetbrains:kotlin-react-dom:17.0.0-pre.129-kotlin-1.4.20")
+            }
+        }
+
+        val jsTest by getting {
+            dependencies {
+                implementation("tz.co.asoft:test-coroutines:1.1.10")
             }
         }
     }

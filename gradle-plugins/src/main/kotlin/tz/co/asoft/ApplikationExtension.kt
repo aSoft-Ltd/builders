@@ -21,9 +21,9 @@ open class ApplikationExtension(val project: Project) {
             put("name", name)
             putAll(kommon.values)
             putAll(properties)
-            val namespace = project.group.toString()
-            put("namespace", namespace)
-            put("package", "$namespace.$name")
+            val company = project.group.toString()
+            put("company", company)
+            put("namespace", "$company.$name")
             put("version", project.version.toString())
         }).also { konfig ->
             konfigs.add(konfig)
@@ -31,7 +31,7 @@ open class ApplikationExtension(val project: Project) {
             if (ext == null) {
                 project.tasks.create<GenerateKonfigFileTask>("generate${konfig.name.capitalize()}KonfigFile") {
                     this.konfig = konfig
-                }
+                }.generate()
             } else {
                 project.afterEvaluate {
                     ext.targets.filter { target ->
@@ -40,7 +40,7 @@ open class ApplikationExtension(val project: Project) {
                         tasks.create<GenerateKonfigFileTask>("generate${target.name.capitalize()}${konfig.name.capitalize()}KonfigFile") {
                             this.konfig = konfig
                             mppTarget = target
-                        }
+                        }.generate()
                     }
                 }
             }

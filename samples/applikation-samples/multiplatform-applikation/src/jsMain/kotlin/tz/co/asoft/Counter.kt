@@ -8,8 +8,10 @@ import react.dom.div
 import styled.css
 import styled.styledButton
 import styled.styledSpan
+import tz.co.asoft.ticker.JsView
 
-private class Counter(p: Props) : RComponent<Counter.Props, Counter.State>(p) {
+@JsExport
+class Counter(p: Props) : RComponent<Counter.Props, Counter.State>(p) {
     class Props(val start: Int) : RProps
     class State(var value: Int) : RState
 
@@ -35,4 +37,5 @@ private class Counter(p: Props) : RComponent<Counter.Props, Counter.State>(p) {
     }
 }
 
+@JsView
 fun RBuilder.Counter(startAt: Int = 0) = child(Counter::class.js, Counter.Props(startAt)) {}

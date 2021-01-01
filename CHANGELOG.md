@@ -1,3 +1,8 @@
+# 1.3.0 : 2021.01.01
+- Added js application & library configurarions
+- Added default testing support
+- Fixed flakiness in picking up konfig files
+
 # 1.2.0 : 2020.12.15
 ## New Features
 - [x] Provide easy lib configurations

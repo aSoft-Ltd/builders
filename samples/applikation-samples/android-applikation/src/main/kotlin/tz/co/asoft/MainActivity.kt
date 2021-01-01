@@ -11,7 +11,7 @@ class MainActivity : Activity() {
         setContentView(R.layout.main_layout)
         val text = findViewById<TextView>(R.id.text)
         val kfg = konfig()
-        val json = Mapper.encodeToString(kfg)
+        val json = Mapper { prettyPrint = true }.encodeToString(kfg)
 
         val change: Int by kfg
         text.text = "$json\n\nChange: $change"

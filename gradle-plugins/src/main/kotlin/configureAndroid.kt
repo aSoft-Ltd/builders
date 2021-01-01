@@ -22,6 +22,7 @@ fun BaseExtension.configureAndroid(dir: String = "src/androidMain") {
         getByName("main") {
             java.srcDir("$dir/kotlin")
             manifest.srcFile("$dir/AndroidManifest.xml")
+            assets.srcDirs("$dir/assets", "build/intermediates/konfigs")
             res.srcDirs("$dir/resources")
         }
     }

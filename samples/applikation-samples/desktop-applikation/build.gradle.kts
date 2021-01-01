@@ -1,20 +1,16 @@
 plugins {
-    kotlin("jvm") version "1.4.20"
+    kotlin("jvm") version "1.4.21"
     id("tz.co.asoft.applikation")
 }
 
-repositories {
-    google()
-    jcenter()
-}
-
 group = "tz.co.asoft"
-version = "2020.2"
+version = "2021.1"
 
 application {
     mainClassName = "tz.co.asoft.MainKt"
 }
-data class Person(val name: String, val age: Int)
+
+data class Person(val name: String, val age: Int) : java.io.Serializable
 applikation {
     common(
         "Main-Class" to "tz.co.asoft.MainKt",
@@ -38,14 +34,15 @@ applikation {
 }
 
 kotlin {
-    target.compilations.all {
-        kotlinOptions {
-            jvmTarget = "1.8"
-            useIR = true
+    target {
+        targetJava("1.8")
+    }
+
+    sourceSets {
+        val main by getting {
+            dependencies {
+                implementation("tz.co.asoft:applikation-runtime:${versions.asoft_builders}")
+            }
         }
     }
-}
-
-dependencies {
-    implementation("tz.co.asoft:applikation-runtime:0.0.1")
 }

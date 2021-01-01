@@ -28,21 +28,13 @@ applikation {
 }
 
 kotlin {
-    js(IR) {
-        browser {
-            commonWebpackConfig {
-                outputFileName = "main.js"
-                cssSupport.enabled = true
-            }
-        }
-        binaries.executable()
-    }
+    js(IR) { application() }
 
     sourceSets {
         val main by getting {
             dependencies {
                 implementation(project(":todo-core"))
-                implementation("tz.co.asoft:reakt-navigation:0.0.1")
+                implementation(asoft("reakt-navigation", "0.0.8"))
             }
         }
     }

@@ -13,26 +13,21 @@ version = "2020.2"
 
 applikation {
     debug(
-            "link" to "http://debug.com"
+        "link" to "http://debug.com"
     )
 
     staging(
-            "link" to "https://staging.com"
+        "link" to "https://staging.com"
     )
 
     release(
-            "link" to "https://release.com"
+        "link" to "https://release.com"
     )
 }
 
 kotlin {
     js(IR) {
-        browser {
-            webpackTask {
-                cssSupport.enabled = true
-            }
-        }
-        binaries.executable()
+        application()
     }
 }
 

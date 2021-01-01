@@ -18,22 +18,18 @@ class ApplikationKonfigAndroid(
     val mppTarget: KotlinAndroidTarget?
 ) {
     init {
-        with(project) {
-            configureAssetsTasks(konfig)
-            createInstallRunTasks(konfig)
-        }
+        project.createPreBuildTasks(konfig)
+        project.createInstallRunTasks(konfig)
     }
 
-    private fun Project.configureAssetsTasks(konfig: Konfig) {
-        tasks.findByName(
-            "merge${konfig.name.capitalize()}Resources"
-        )?.apply {
-            dependsOn(konfig.generateKonfigFileTaskName(mppTarget))
+    private fun Project.createPreBuildTasks(kfg: Konfig) {
+        tasks.getByName("pre${kfg.name.capitalize()}Build").apply {
+            dependsOn(kfg.generateKonfigFileTaskName(mppTarget))
         }
     }
 
     private fun Project.createInstallRunTasks(konfig: Konfig) {
-        val androidExt = project.extensions.findByType(BaseAppModuleExtension::class.java)
+        val androidExt = extensions.findByType(BaseAppModuleExtension::class.java)
         val variants = androidExt?.applicationVariants
         val variant = variants?.find { it.name.equals(konfig.name, ignoreCase = true) } ?: return
         val installTask = tasks.findByName("install${konfig.name.capitalize()}") ?: return
