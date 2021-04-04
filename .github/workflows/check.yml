@@ -10,7 +10,7 @@ env:
 
 jobs:
   checking-library-samples-android:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -31,7 +31,7 @@ jobs:
         working-directory: ./samples/library-samples/android-library
 
   checking-library-samples-browser:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -52,7 +52,7 @@ jobs:
         working-directory: ./samples/library-samples/js-library
 
   checking-library-samples-jvm:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -73,7 +73,7 @@ jobs:
         working-directory: ./samples/library-samples/jvm-library
 
   checking-library-samples-multiplatform:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -94,7 +94,7 @@ jobs:
         working-directory: ./samples/library-samples/multiplatform-library
 
   checking-applikation-samples-android:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -115,7 +115,7 @@ jobs:
         working-directory: ./samples/applikation-samples/android-applikation
 
   checking-applikation-samples-browser:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -141,7 +141,7 @@ jobs:
         working-directory: ./samples/applikation-samples/browser-applikation
 
   checking-applikation-samples-desktop:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -162,7 +162,7 @@ jobs:
         working-directory: ./samples/applikation-samples/desktop-applikation
 
   checking-applikation-samples-multiplatform:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -199,7 +199,7 @@ jobs:
         working-directory: ./samples/applikation-samples/multiplatform-applikation
 
   checking-applikation-samples-multimodule:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -225,7 +225,7 @@ jobs:
         working-directory: ./samples/applikation-samples/multimodule-applikation
 
   building-applikation-runtime:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
