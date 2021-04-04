@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.application") version "4.1.0"
-    kotlin("android") version "1.4.21"
+    id("com.android.application") version "4.1.3"
+    kotlin("android") version "1.4.31"
     id("tz.co.asoft.applikation")
 }
 

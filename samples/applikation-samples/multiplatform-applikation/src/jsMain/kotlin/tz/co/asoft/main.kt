@@ -8,6 +8,8 @@ import styled.styledH1
 import tz.co.asoft.ticker.JsView
 import tz.co.asoft.ticker.Ticker
 import kotlin.js.json
+import applikation.konfig
+import kotlinx.serialization.mapper.Mapper
 
 fun main() {
     console.log("Works")

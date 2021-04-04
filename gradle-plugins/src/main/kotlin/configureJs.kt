@@ -3,11 +3,15 @@ import org.jetbrains.kotlin.gradle.targets.js.dsl.KotlinJsTargetDsl
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 import java.io.File
 
-private fun Project.createKarmaTimeoutFile(testTimeout: Int) {
+/**
+ * @param testTimeout in milliseconds
+ */
+fun Project.createKarmaTimeoutFile(testTimeout: Int) {
     val karmaDir = file("karma.config.d").apply { mkdirs() }
     File(karmaDir, "timeout.js").apply {
         createNewFile()
-        writeText("""
+        writeText(
+            """
             config.set({
               "client": {
                 "mocha": {
@@ -16,14 +20,15 @@ private fun Project.createKarmaTimeoutFile(testTimeout: Int) {
               },
               "browserDisconnectTimeout": $testTimeout
             });
-        """.trimIndent())
+        """.trimIndent()
+        )
     }
 }
 
 /**
  * @param tesTimeout in milliseconds
  */
-fun KotlinJsTargetDsl.library(tesTimeout: Int = 10000, forBrowser: Boolean = true, forNodeJs: Boolean = true) {
+fun KotlinJsTargetDsl.targetJava(tesTimeout: Int = 10000, forBrowser: Boolean = true, forNodeJs: Boolean = true) {
     enableTesting(tesTimeout, forBrowser, forNodeJs)
 }
 

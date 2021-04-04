@@ -6,6 +6,7 @@ import react.dom.h3
 import react.dom.render
 import tz.co.asoft.ticker.Ticker
 import kotlin.js.json
+import applikation.konfig
 
 fun main() {
     console.log("Works")

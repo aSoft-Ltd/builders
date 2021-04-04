@@ -1,4 +1,4 @@
-package tz.co.asoft
+package builders
 
 import org.jetbrains.kotlin.gradle.plugin.KotlinTarget
 import java.io.Serializable

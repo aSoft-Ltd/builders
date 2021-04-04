@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.application") version "4.1.0"
-    kotlin("multiplatform") version "1.4.20"
+    id("com.android.application") version "4.1.3"
+    kotlin("multiplatform") version "1.4.31"
     id("tz.co.asoft.applikation")
 }
 
@@ -57,7 +57,9 @@ applikation {
 }
 
 kotlin {
-    multiplatformApplication(forAndroid = true, testTimeout = 10000)
+    android{ application()}
+    jvm {application()}
+    js(IR) { application() }
     sourceSets {
         val commonMain by getting {
             dependencies {
