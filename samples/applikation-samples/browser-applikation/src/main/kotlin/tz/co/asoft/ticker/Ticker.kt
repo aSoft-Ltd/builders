@@ -6,7 +6,9 @@ import react.*
 import react.dom.br
 import styled.*
 
-private class Ticker(p: Props) : RComponent<Ticker.Props, Ticker.State>(p), CoroutineScope by CoroutineScope(SupervisorJob()) {
+@JsExport
+class Ticker private constructor(p: Props) : RComponent<Ticker.Props, Ticker.State>(p),
+    CoroutineScope by CoroutineScope(SupervisorJob()) {
 
     class Props(val config: TickConfig) : RProps
     class State(var config: TickConfig, var ui: TickerUIState) : RState
@@ -120,7 +122,7 @@ private class Ticker(p: Props) : RComponent<Ticker.Props, Ticker.State>(p), Coro
 }
 
 fun RBuilder.Ticker(
-        dif: Int = 1,
-        startAt: Int = 0,
-        interval: Int = 1000
+    dif: Int = 1,
+    startAt: Int = 0,
+    interval: Int = 1000
 ) = child(Ticker::class.js, Ticker.Props(Ticker.TickConfig(dif, startAt, interval))) {}

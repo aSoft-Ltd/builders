@@ -36,7 +36,7 @@ open class GenerateKonfigFileTask : DefaultTask() {
         group = "konfig"
     }
 
-    @Input
+    @Internal
     var konfig = Konfig("default", Konfig.Type.DEBUG, mapOf("name" to "default"))
 
     @Internal
