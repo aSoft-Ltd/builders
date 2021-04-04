@@ -48,7 +48,7 @@ version = versions.asoft_builders
 
 object versions {
     val kotlin = "1.4.31"
-    val asoft_builders = "1.3.10"
+    val asoft_builders = "1.3.20"
     val agp = "4.1.3"
     val nexus_staging = "0.22.0"
 }
