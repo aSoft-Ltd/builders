@@ -57,13 +57,13 @@ applikation {
 }
 
 kotlin {
-    android{ application()}
-    jvm {application()}
+    android { application() }
+    jvm { application() }
     js(IR) { application() }
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("tz.co.asoft:applikation-runtime:*")
+                implementation("tz.co.asoft:applikation-runtime:1.3.20")
             }
         }
 
