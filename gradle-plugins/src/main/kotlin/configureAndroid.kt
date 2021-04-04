@@ -55,5 +55,6 @@ fun KotlinAndroidTarget.targetJava(version: String = "1.8") = compilations.all {
     kotlinOptions {
         jvmTarget = "1.8"
         useIR = true
+        freeCompilerArgs = listOf("-Xallow-unstable-dependencies")
     }
 }

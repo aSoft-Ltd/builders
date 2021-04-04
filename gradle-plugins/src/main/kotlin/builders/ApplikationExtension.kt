@@ -1,4 +1,4 @@
-package tz.co.asoft
+package builders
 
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.create

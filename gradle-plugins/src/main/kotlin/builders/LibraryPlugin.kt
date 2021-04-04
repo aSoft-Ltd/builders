@@ -1,4 +1,4 @@
-package tz.co.asoft
+package builders
 
 import com.android.build.gradle.LibraryExtension
 import configureAndroid
@@ -9,9 +9,7 @@ import org.gradle.internal.impldep.org.codehaus.classworlds.ConfigurationExcepti
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.repositories
 import org.jetbrains.kotlin.gradle.dsl.KotlinJsProjectExtension
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import publicRepos
-import targetJava
 
 open class LibraryPlugin : Plugin<Project> {
     fun Project.setupAndroidLib(dir: String) {

@@ -5,7 +5,6 @@ plugins {
 }
 
 repositories {
-    mavenLocal()
     google()
     jcenter()
     mavenCentral()
@@ -15,13 +14,13 @@ gradlePlugin {
     plugins {
         val applikation by creating {
             id = "tz.co.asoft.applikation"
-            implementationClass = "tz.co.asoft.ApplikationGradlePlugin"
+            implementationClass = "builders.ApplikationGradlePlugin"
         }
 
         val library by creating {
             id = "tz.co.asoft.library"
             description = "A kotlin library plugin"
-            implementationClass = "tz.co.asoft.LibraryPlugin"
+            implementationClass = "builders.LibraryPlugin"
         }
     }
 }
@@ -48,9 +47,9 @@ group = "tz.co.asoft"
 version = versions.asoft_builders
 
 object versions {
-    val kotlin = "1.4.21"
-    val asoft_builders = "1.3.0"
-    val agp = "4.1.0"
+    val kotlin = "1.4.31"
+    val asoft_builders = "1.3.10"
+    val agp = "4.1.3"
     val nexus_staging = "0.22.0"
 }
 

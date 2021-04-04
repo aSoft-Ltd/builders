@@ -1,4 +1,7 @@
-package tz.co.asoft
+package applikation
+
+import kotlinx.serialization.mapper.Mapper
+import kotlinx.serialization.mapper.WrappedMap
 
 fun konfig(): WrappedMap {
     val error = Throwable("Can't locate $KONFIG_JSON_FILE")

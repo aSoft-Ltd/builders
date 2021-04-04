@@ -1,5 +1,7 @@
-package tz.co.asoft
+package applikation
 
+import kotlinx.serialization.mapper.Mapper
+import kotlinx.serialization.mapper.WrappedMap
 import kotlin.js.json
 
 private external fun <T> require(module: String): T
