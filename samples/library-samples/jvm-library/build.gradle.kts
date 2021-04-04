@@ -6,5 +6,9 @@ plugins {
 group = "tz.co.asoft"
 version = "0.0.1"
 
-
-configurePublishing{}
+kotlin {
+    target {
+        library()
+    }
+}
+configurePublishing {}
