@@ -53,6 +53,14 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Cache konan
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.konan/dependencies
+            ~/.konan/kotlin-native-macos*
+          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          restore-keys: ${{ runner.os }}-konan-
       - name: Building samples/js-library
         run: |
           chmod +x ./gradlew
@@ -74,6 +82,14 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Cache konan
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.konan/dependencies
+            ~/.konan/kotlin-native-macos*
+          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          restore-keys: ${{ runner.os }}-konan-
       - name: Building samples/library-samples/jvm-library
         run: |
           chmod +x ./gradlew
@@ -95,6 +111,14 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Cache konan
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.konan/dependencies
+            ~/.konan/kotlin-native-macos*
+          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          restore-keys: ${{ runner.os }}-konan-
       - name: Building samples/library-samples/multiplatform-library
         run: |
           chmod +x ./gradlew
@@ -116,6 +140,14 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Cache konan
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.konan/dependencies
+            ~/.konan/kotlin-native-macos*
+          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          restore-keys: ${{ runner.os }}-konan-
       - name: Building samples/applikation-samples/android-applikation
         run: |
           chmod +x ./gradlew
@@ -137,6 +169,14 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Cache konan
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.konan/dependencies
+            ~/.konan/kotlin-native-macos*
+          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          restore-keys: ${{ runner.os }}-konan-
       - name: Clean applikation-runtime
         run: |
           chmod +x ./gradlew
@@ -163,6 +203,14 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Cache konan
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.konan/dependencies
+            ~/.konan/kotlin-native-macos*
+          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          restore-keys: ${{ runner.os }}-konan-
       - name: Building samples/applikation-samples/desktop-applikation
         run: |
           chmod +x ./gradlew
@@ -184,6 +232,14 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Cache konan
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.konan/dependencies
+            ~/.konan/kotlin-native-macos*
+          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          restore-keys: ${{ runner.os }}-konan-
       - name: Make gradlew executable
         run: chmod +x ./gradlew
         working-directory: ./applikation-runtime
@@ -221,6 +277,14 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Cache konan
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.konan/dependencies
+            ~/.konan/kotlin-native-macos*
+          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          restore-keys: ${{ runner.os }}-konan-
       - name: Clean applikation-runtime
         run: |
           chmod +x ./gradlew
@@ -247,6 +311,14 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Cache konan
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.konan/dependencies
+            ~/.konan/kotlin-native-macos*
+          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          restore-keys: ${{ runner.os }}-konan-
       - name: Building applikation-runtime
         run: |
           chmod +x ./gradlew
