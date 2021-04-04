@@ -1,5 +1,8 @@
 package tz.co.asoft
 
+import applikation.konfig
+import kotlinx.serialization.mapper.Mapper
+
 fun main() {
     val kfg = konfig()
     val json = Mapper { prettyPrint = true }.encodeToString(kfg)

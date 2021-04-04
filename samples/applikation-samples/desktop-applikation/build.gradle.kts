@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.4.21"
+    kotlin("jvm") version "1.4.31"
     id("tz.co.asoft.applikation")
 }
 
@@ -35,13 +35,13 @@ applikation {
 
 kotlin {
     target {
-        targetJava("1.8")
+        application()
     }
 
     sourceSets {
         val main by getting {
             dependencies {
-                implementation("tz.co.asoft:applikation-runtime:${versions.asoft_builders}")
+                implementation("tz.co.asoft:applikation-runtime:${versions.asoft.builders}")
             }
         }
     }

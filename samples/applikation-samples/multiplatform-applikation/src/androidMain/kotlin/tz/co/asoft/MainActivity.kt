@@ -4,6 +4,8 @@ import android.app.Activity
 import android.os.Bundle
 import android.widget.TextView
 import tz.co.asoft.konfig.sample.R
+import applikation.konfig
+import kotlinx.serialization.mapper.Mapper
 
 class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
