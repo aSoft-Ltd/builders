@@ -1,4 +1,4 @@
-package tz.co.asoft
+package builders
 
 import groovy.json.JsonBuilder
 import org.gradle.api.DefaultTask
@@ -13,7 +13,7 @@ import java.io.File
 
 open class GenerateKonfigFileTask : DefaultTask() {
     companion object {
-        const val DEFAULT_KONFIG_FILE_NAME = "tz.co.asoft.konfig"
+        const val DEFAULT_KONFIG_FILE_NAME = "applikation.konfig"
         fun defaultFolderLocation(project: Project, konfig: Konfig, mppTarget: KotlinTarget?): File {
             val build = project.buildDir.absolutePath
             return when {
@@ -36,7 +36,7 @@ open class GenerateKonfigFileTask : DefaultTask() {
         group = "konfig"
     }
 
-    @Input
+    @Internal
     var konfig = Konfig("default", Konfig.Type.DEBUG, mapOf("name" to "default"))
 
     @Internal
@@ -65,11 +65,6 @@ open class GenerateKonfigFileTask : DefaultTask() {
     }
 
     fun generate() {
-//        val file = if (outputDir.name.endsWith("out")) {
-//            outputFile
-//        } else {
-//            konfigFile
-//        }
         if (konfigFile.readJson() != konfig.json) konfigFile.writeText(konfig.json)
     }
 

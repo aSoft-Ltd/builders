@@ -1,16 +1,10 @@
-package tz.co.asoft
+package builders
 
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.Project
-import org.gradle.api.tasks.Copy
 import org.gradle.api.tasks.Exec
-import org.gradle.jvm.tasks.Jar
 import org.gradle.kotlin.dsl.create
-import org.gradle.kotlin.dsl.findByType
-import org.gradle.kotlin.dsl.getByName
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinAndroidTarget
-import java.io.File
 
 class ApplikationKonfigAndroid(
     val project: Project,

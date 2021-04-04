@@ -9,7 +9,8 @@ import styled.css
 import styled.styledButton
 import styled.styledSpan
 
-private class Counter(p: Props) : RComponent<Counter.Props, Counter.State>(p) {
+@JsExport
+class Counter private constructor(p: Props) : RComponent<Counter.Props, Counter.State>(p) {
     class Props(val start: Int) : RProps
     class State(var value: Int) : RState
 
