@@ -1,3 +1,8 @@
+# 1.3.20 : 2021.04.05
+- Added application and library dsl
+- Added macos targets
+- Setup macos CI build
+
 # 1.3.0 : 2021.01.01
 - Added js application & library configurarions
 - Added default testing support
