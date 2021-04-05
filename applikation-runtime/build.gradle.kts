@@ -1,10 +1,13 @@
 plugins {
     id("com.android.library") version "4.1.3"
-    kotlin("multiplatform") version "1.4.21"
+    kotlin("multiplatform") version "1.4.31"
     id("io.codearte.nexus-staging") version "0.22.0"
     id("tz.co.asoft.library")
     signing
 }
+
+group = "tz.co.asoft"
+version = versions.asoft.builders
 
 kotlin {
     android { library() }
