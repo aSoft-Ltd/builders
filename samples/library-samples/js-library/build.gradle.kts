@@ -11,4 +11,7 @@ kotlin {
     js(IR) { library() }
 }
 
-configurePublishing {}
+KotlinLibrary(
+    group = "tz.co.asoft",
+    version = lib_version
+) {}
