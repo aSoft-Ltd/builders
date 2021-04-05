@@ -48,13 +48,13 @@ Konfig comes with a gradle plugin as a well as a runtime library. Just do the fo
 ```kotlin
 plugins {
     // . . . .
-    id("tz.co.asoft.applikation") version "1.3.20"
+    id("tz.co.asoft.applikation") version "1.3.23"
 }
 
 // . . .
 
 dependencies {
-    implementation("tz.co.asoft:applikation-runtime:1.3.20") // please use the latest version possible
+    implementation("tz.co.asoft:applikation-runtime:1.3.23") // please use the latest version possible
 }
 ```
 
@@ -324,7 +324,7 @@ plugins {
 ```
 After that you can just run `./gradlew publish` and you are all set
 
-[badge-maven]: https://img.shields.io/maven-central/v/tz.co.asoft/applikation-runtime/1.3.20?style=flat
+[badge-maven]: https://img.shields.io/maven-central/v/tz.co.asoft/applikation-runtime/1.3.23?style=flat
 
 [badge-mpp]: https://img.shields.io/badge/kotlin-multiplatform-blue?style=flat
 

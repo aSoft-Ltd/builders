@@ -2,6 +2,7 @@
 - Added application and library dsl
 - Added macos targets
 - Setup macos CI build
+- Fixed publishing error to addition of sources
 
 # 1.3.0 : 2021.01.01
 - Added js application & library configurarions
