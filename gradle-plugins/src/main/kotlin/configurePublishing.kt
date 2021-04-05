@@ -123,12 +123,6 @@ fun Project.configurePublishing(config: PublishingExtension.() -> Unit) {
             }
         }
         config()
-        repositories {
-            maven {
-                name = "buildDir"
-                url = uri("file://${rootProject.buildDir}/localMaven")
-            }
-        }
     }
 }
 
