@@ -1,9 +1,9 @@
 plugins {
     id("com.android.library") version "4.1.3"
     kotlin("multiplatform") version "1.4.31"
-    id("io.codearte.nexus-staging") version "0.22.0"
+//    id("io.codearte.nexus-staging") version "0.22.0"
     id("tz.co.asoft.library")
-    signing
+//    signing
 }
 
 group = "tz.co.asoft"
@@ -28,7 +28,12 @@ kotlin {
     }
 }
 
-aSoftOSSLibrary(
-    version = versions.asoft.builders,
-    description = "A Library to help reading configurations"
-)
+//aSoftOSSLibrary(
+//    version = versions.asoft.builders,
+//    description = "A Library to help reading configurations"
+//)
+
+KotlinLibrary(
+    group="tz.co.asoft",
+    version=versions.asoft.builders
+) {}
