@@ -4,7 +4,7 @@ object versions {
     val nexus_staging = "0.22.0"
 
     object asoft {
-        val builders = "1.3.23"
+        val builders = "1.3.24"
         val mapper = "0.0.60"
     }
 }
