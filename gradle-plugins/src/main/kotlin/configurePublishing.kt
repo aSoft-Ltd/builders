@@ -75,12 +75,12 @@ fun Project.configurePublishing(config: PublishingExtension.() -> Unit) {
             when {
                 plugins.hasPlugin("org.jetbrains.kotlin.multiplatform") -> {
                     withType<MavenPublication> {
-                        // multiplatform doesn't add javadoc by default so add it here
                         artifact(javadocJarTaskProvider.get())
+                        /* No need to add artifacts, Multiplatform already adds sources
                         if (name == "kotlinMultiplatform") {
-                            // sources are added for each platform but not for the common module
                             artifact(sourcesJarTaskProvider.get())
                         }
+                         */
                     }
                 }
 
