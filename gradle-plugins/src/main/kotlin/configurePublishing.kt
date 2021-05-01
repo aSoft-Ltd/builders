@@ -47,28 +47,28 @@ fun Project.configurePublishing(config: PublishingExtension.() -> Unit) {
         from(javadocTask.destinationDir)
     }
 
-    val javaPluginConvention = project.convention.findPlugin(JavaPluginConvention::class.java)
-    val sourcesJarTaskProvider = tasks.register<Jar>("sourcesJar") {
-        archiveClassifier.set("sources")
-        when {
-            javaPluginConvention != null && javaPluginConvention.sourceSets.isNotEmpty() && android == null -> {
-                from(javaPluginConvention.sourceSets["main"].allSource)
-            }
-
-            android != null -> {
-                from(android.sourceSets["main"].java.getSourceFiles())
-            }
-
-            js != null -> {
-                with(project.tasks.getByName("jsSourcesJar") as CopySpec)
-            }
-        }
-    }
-
-    tasks.withType<Javadoc> {
-        // TODO: fix the javadoc warnings
-        (options as StandardJavadocDocletOptions).addStringOption("Xdoclint:none", "-quiet")
-    }
+//    val javaPluginConvention = project.convention.findPlugin(JavaPluginConvention::class.java)
+//    val sourcesJarTaskProvider = tasks.register<Jar>("sourcesJar") {
+//        archiveClassifier.set("sources")
+//        when {
+//            javaPluginConvention != null && javaPluginConvention.sourceSets.isNotEmpty() && android == null -> {
+//                from(javaPluginConvention.sourceSets["main"].allSource)
+//            }
+//
+//            android != null -> {
+//                from(android.sourceSets["main"].java.getSourceFiles())
+//            }
+//
+//            js != null -> {
+//                with(project.tasks.getByName("jsSourcesJar") as CopySpec)
+//            }
+//        }
+//    }
+//
+//    tasks.withType<Javadoc> {
+//        // TODO: fix the javadoc warnings
+//        (options as StandardJavadocDocletOptions).addStringOption("Xdoclint:none", "-quiet")
+//    }
 
     configure<PublishingExtension> {
         publications {
@@ -88,7 +88,7 @@ fun Project.configurePublishing(config: PublishingExtension.() -> Unit) {
                     // java-gradle-plugin doesn't add javadoc/sources by default so add it here
                     withType<MavenPublication> {
                         artifact(javadocJarTaskProvider.get())
-                        artifact(sourcesJarTaskProvider.get())
+//                        artifact(sourcesJarTaskProvider.get())
                     }
                 }
 
@@ -99,7 +99,7 @@ fun Project.configurePublishing(config: PublishingExtension.() -> Unit) {
                         version = this@configurePublishing.version.toString()
                         from(components["kotlin"])
                         artifact(javadocJarTaskProvider.get())
-                        artifact(sourcesJarTaskProvider.get())
+//                        artifact(sourcesJarTaskProvider.get())
                     }
                 }
                 else -> {
@@ -113,7 +113,7 @@ fun Project.configurePublishing(config: PublishingExtension.() -> Unit) {
                             }
                         }
                         artifact(javadocJarTaskProvider.get())
-                        artifact(sourcesJarTaskProvider.get())
+//                        artifact(sourcesJarTaskProvider.get())
                     }
                 }
             }
