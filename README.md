@@ -305,9 +305,11 @@ in your Konfig
 3. runJs[Konfig] -> opens the browser and runs the js app with the provided konfiguration. You should note that all
    debug types are not minified for obvious reasons, the rest are minified
 
-## Library Plugin 
+## Library Plugin
+
 This library comes packed with ready to use default gradle-plugins and configurations for Kotlin Multiplatform projects
 and authoring gradle plugins. Supports
+
 - Kotlin Multiplatform libraries
 - Kotlin Javascript libraries
 - Kotlin Android libraries
@@ -315,16 +317,19 @@ and authoring gradle plugins. Supports
 - Kotlin Native libraries
 
 ## Usage
+
 Configuring a library becomes as easy as just, and all publications will be set
+
 ```kotlin
 plugins {                                    
     kotlin("js") // [kotlin("jvm")|kotlin("multiplatform")|kotlin("android")|kotlin("js)]
     id("tz.co.asoft.library")
 }
 ```
+
 After that you can just run `./gradlew publish` and you are all set
 
-[badge-maven]: https://img.shields.io/maven-central/v/tz.co.asoft/applikation-runtime/1.3.23?style=flat
+[badge-maven]: https://img.shields.io/maven-central/v/tz.co.asoft/applikation-runtime/1.3.30?style=flat
 
 [badge-mpp]: https://img.shields.io/badge/kotlin-multiplatform-blue?style=flat
 

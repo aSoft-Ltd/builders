@@ -17,7 +17,6 @@ import java.io.File
 
 fun Project.configurePublishing(config: PublishingExtension.() -> Unit) {
     val android = extensions.findByType<BaseExtension>()
-    val js = extensions.findByType<KotlinJsProjectExtension>()
 
     /**
      * Javadoc
@@ -47,48 +46,38 @@ fun Project.configurePublishing(config: PublishingExtension.() -> Unit) {
         from(javadocTask.destinationDir)
     }
 
-    val javaPluginConvention = project.convention.findPlugin(JavaPluginConvention::class.java)
-    val sourcesJarTaskProvider = tasks.register<Jar>("sourcesJar") {
-        archiveClassifier.set("sources")
-        when {
-            javaPluginConvention != null && javaPluginConvention.sourceSets.isNotEmpty() && android == null -> {
-                from(javaPluginConvention.sourceSets["main"].allSource)
-            }
-
-            android != null -> {
-                from(android.sourceSets["main"].java.getSourceFiles())
-            }
-
-            js != null -> {
-                with(project.tasks.getByName("jsSourcesJar") as CopySpec)
-            }
-        }
-    }
-
-    tasks.withType<Javadoc> {
-        // TODO: fix the javadoc warnings
-        (options as StandardJavadocDocletOptions).addStringOption("Xdoclint:none", "-quiet")
-    }
-
     configure<PublishingExtension> {
         publications {
             when {
                 plugins.hasPlugin("org.jetbrains.kotlin.multiplatform") -> {
                     withType<MavenPublication> {
                         artifact(javadocJarTaskProvider.get())
-                        /* No need to add artifacts, Multiplatform already adds sources
-                        if (name == "kotlinMultiplatform") {
-                            artifact(sourcesJarTaskProvider.get())
-                        }
-                         */
                     }
                 }
 
-                plugins.hasPlugin("java-gradle-plugin") -> {
-                    // java-gradle-plugin doesn't add javadoc/sources by default so add it here
-                    withType<MavenPublication> {
+                plugins.hasPlugin("org.jetbrains.kotlin.android") -> afterEvaluate {
+                    val sourcesJarTaskProvider = tasks.register<Jar>("sourcesJar") {
+                        archiveClassifier.set("sources")
+                        from(android!!.sourceSets["main"].java.srcDirs)
+                    }
+                    create<MavenPublication>("main") {
+                        groupId = this@configurePublishing.group.toString()
+                        artifactId = this@configurePublishing.name
+                        version = this@configurePublishing.version.toString()
+                        from(components["release"])
                         artifact(javadocJarTaskProvider.get())
                         artifact(sourcesJarTaskProvider.get())
+                    }
+                }
+
+                plugins.hasPlugin("org.jetbrains.kotlin.jvm") -> {
+                    create<MavenPublication>("main") {
+                        groupId = this@configurePublishing.group.toString()
+                        artifactId = this@configurePublishing.name
+                        version = this@configurePublishing.version.toString()
+                        from(components["kotlin"])
+                        artifact(javadocJarTaskProvider.get())
+                        artifact(tasks.findByName("kotlinSourcesJar"))
                     }
                 }
 
@@ -99,21 +88,7 @@ fun Project.configurePublishing(config: PublishingExtension.() -> Unit) {
                         version = this@configurePublishing.version.toString()
                         from(components["kotlin"])
                         artifact(javadocJarTaskProvider.get())
-                        artifact(sourcesJarTaskProvider.get())
-                    }
-                }
-                else -> {
-                    create<MavenPublication>("main") {
-                        val javaComponent = components["kotlin"]
-                        if (javaComponent != null) {
-                            from(javaComponent)
-                        } else if (android != null) {
-                            afterEvaluate {
-                                from(components.findByName("release"))
-                            }
-                        }
-                        artifact(javadocJarTaskProvider.get())
-                        artifact(sourcesJarTaskProvider.get())
+                        artifact(tasks.findByName("jsSourcesJar"))
                     }
                 }
             }
