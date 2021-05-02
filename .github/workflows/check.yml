@@ -30,7 +30,7 @@ jobs:
           path: |
             ~/.konan/dependencies
             ~/.konan/kotlin-native-macos*
-          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          key: ${{ runner.os }}-konan-
           restore-keys: ${{ runner.os }}-konan-
       - name: Building samples/library-samples/android-library
         run: |
@@ -59,7 +59,7 @@ jobs:
           path: |
             ~/.konan/dependencies
             ~/.konan/kotlin-native-macos*
-          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          key: ${{ runner.os }}-konan-
           restore-keys: ${{ runner.os }}-konan-
       - name: Building samples/js-library
         run: |
@@ -88,7 +88,7 @@ jobs:
           path: |
             ~/.konan/dependencies
             ~/.konan/kotlin-native-macos*
-          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          key: ${{ runner.os }}-konan-
           restore-keys: ${{ runner.os }}-konan-
       - name: Building samples/library-samples/jvm-library
         run: |
@@ -117,7 +117,7 @@ jobs:
           path: |
             ~/.konan/dependencies
             ~/.konan/kotlin-native-macos*
-          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          key: ${{ runner.os }}-konan-
           restore-keys: ${{ runner.os }}-konan-
       - name: Building samples/library-samples/multiplatform-library
         run: |
@@ -146,7 +146,7 @@ jobs:
           path: |
             ~/.konan/dependencies
             ~/.konan/kotlin-native-macos*
-          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          key: ${{ runner.os }}-konan-
           restore-keys: ${{ runner.os }}-konan-
       - name: Building samples/applikation-samples/android-applikation
         run: |
@@ -175,7 +175,7 @@ jobs:
           path: |
             ~/.konan/dependencies
             ~/.konan/kotlin-native-macos*
-          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          key: ${{ runner.os }}-konan-
           restore-keys: ${{ runner.os }}-konan-
       - name: Clean applikation-runtime
         run: |
@@ -209,7 +209,7 @@ jobs:
           path: |
             ~/.konan/dependencies
             ~/.konan/kotlin-native-macos*
-          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          key: ${{ runner.os }}-konan-
           restore-keys: ${{ runner.os }}-konan-
       - name: Building samples/applikation-samples/desktop-applikation
         run: |
@@ -238,7 +238,7 @@ jobs:
           path: |
             ~/.konan/dependencies
             ~/.konan/kotlin-native-macos*
-          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          key: ${{ runner.os }}-konan-
           restore-keys: ${{ runner.os }}-konan-
       - name: Make gradlew executable
         run: chmod +x ./gradlew
@@ -283,7 +283,7 @@ jobs:
           path: |
             ~/.konan/dependencies
             ~/.konan/kotlin-native-macos*
-          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          key: ${{ runner.os }}-konan-
           restore-keys: ${{ runner.os }}-konan-
       - name: Clean applikation-runtime
         run: |
@@ -317,7 +317,7 @@ jobs:
           path: |
             ~/.konan/dependencies
             ~/.konan/kotlin-native-macos*
-          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          key: ${{ runner.os }}-konan-
           restore-keys: ${{ runner.os }}-konan-
       - name: Building applikation-runtime
         run: |
