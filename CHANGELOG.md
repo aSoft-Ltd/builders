@@ -1,3 +1,6 @@
+# 1.3.30 : 2021.05.02
+- Added kotlin 1.5.0 support
+
 # 1.3.20 : 2021.04.05
 - Added application and library dsl
 - Added macos targets
