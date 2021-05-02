@@ -76,11 +76,6 @@ fun Project.configurePublishing(config: PublishingExtension.() -> Unit) {
                 plugins.hasPlugin("org.jetbrains.kotlin.multiplatform") -> {
                     withType<MavenPublication> {
                         artifact(javadocJarTaskProvider.get())
-                        /* No need to add artifacts, Multiplatform already adds sources
-                        if (name == "kotlinMultiplatform") {
-                            artifact(sourcesJarTaskProvider.get())
-                        }
-                         */
                     }
                 }
 
@@ -99,7 +94,7 @@ fun Project.configurePublishing(config: PublishingExtension.() -> Unit) {
                         version = this@configurePublishing.version.toString()
                         from(components["kotlin"])
                         artifact(javadocJarTaskProvider.get())
-//                        artifact(sourcesJarTaskProvider.get())
+                        artifact(tasks.findByName("jsSourcesJar"))
                     }
                 }
                 else -> {
