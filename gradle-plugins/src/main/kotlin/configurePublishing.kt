@@ -79,11 +79,25 @@ fun Project.configurePublishing(config: PublishingExtension.() -> Unit) {
                     }
                 }
 
-                plugins.hasPlugin("java-gradle-plugin") -> {
-                    // java-gradle-plugin doesn't add javadoc/sources by default so add it here
-                    withType<MavenPublication> {
+                plugins.hasPlugin("org.jetbrains.kotlin.android") -> {
+                    create<MavenPublication>("main") {
+                        groupId = this@configurePublishing.group.toString()
+                        artifactId = this@configurePublishing.name
+                        version = this@configurePublishing.version.toString()
+                        from(components["kotlin"])
                         artifact(javadocJarTaskProvider.get())
-//                        artifact(sourcesJarTaskProvider.get())
+                        artifact(tasks.findByName("kotlinSourcesJar"))
+                    }
+                }
+
+                plugins.hasPlugin("org.jetbrains.kotlin.jvm") -> {
+                    create<MavenPublication>("main") {
+                        groupId = this@configurePublishing.group.toString()
+                        artifactId = this@configurePublishing.name
+                        version = this@configurePublishing.version.toString()
+                        from(components["kotlin"])
+                        artifact(javadocJarTaskProvider.get())
+                        artifact(tasks.findByName("kotlinSourcesJar"))
                     }
                 }
 
