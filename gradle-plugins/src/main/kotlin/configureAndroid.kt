@@ -7,14 +7,14 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinAndroidTarget
  */
 fun BaseExtension.configureAndroid(dir: String = "src/androidMain") {
 
-    compileSdkVersion(28)
+    compileSdkVersion(30)
 
     buildFeatures.apply {
         buildConfig = false
     }
 
     defaultConfig {
-        minSdkVersion(1)
+        minSdk = 18
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -53,8 +53,8 @@ fun BaseExtension.configureAndroid(dir: String = "src/androidMain") {
 
 fun KotlinAndroidTarget.targetJava(version: String = "1.8") = compilations.all {
     kotlinOptions {
-        jvmTarget = "1.8"
-        useIR = true
+        jvmTarget = version
         freeCompilerArgs = listOf("-Xallow-unstable-dependencies")
     }
+    project.useJunit5()
 }

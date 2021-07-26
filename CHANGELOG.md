@@ -1,3 +1,7 @@
+# 1.3.40 : 2021.07.26
+- Added support for kotlin 1.5.2021
+- bumped gradle from 6.8.1 to 7.0.2
+
 # 1.3.30 : 2021.05.02
 - Added kotlin 1.5.0 support
 
