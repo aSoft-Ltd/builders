@@ -48,13 +48,13 @@ Konfig comes with a gradle plugin as a well as a runtime library. Just do the fo
 ```kotlin
 plugins {
     // . . . .
-    id("tz.co.asoft.applikation") version "1.3.23"
+    id("tz.co.asoft.applikation") version "1.3.40"
 }
 
 // . . .
 
 dependencies {
-    implementation("tz.co.asoft:applikation-runtime:1.3.23") // please use the latest version possible
+    implementation("tz.co.asoft:applikation-runtime:1.3.40") // please use the latest version possible
 }
 ```
 
