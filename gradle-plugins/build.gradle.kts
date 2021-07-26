@@ -46,9 +46,9 @@ group = "tz.co.asoft"
 version = versions.asoft_builders
 
 object versions {
-    val kotlin = "1.5.20"
-    val asoft_builders = "1.3.30"
-    val agp = "7.0.0-alpha01"
+    val kotlin = "1.5.21"
+    val asoft_builders = "1.3.40"
+    val agp = "7.1.0-alpha03"
     val nexus_staging = "0.22.0"
 }
 

@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.application") version "7.0.0-alpha01"
-    kotlin("multiplatform") version "1.5.20"
+    id("com.android.application") version "7.1.0-alpha03"
+    kotlin("multiplatform") version "1.5.21"
     id("tz.co.asoft.applikation")
 }
 
@@ -12,21 +12,21 @@ android {
 
     buildTypes {
         val debug by getting {
-            setApplicationIdSuffix("debug")
-            manifestPlaceholders(mapOf("appName" to "Konfig Test Debug"))
-            minifyEnabled(false)
+            applicationIdSuffix = "debug"
+            setManifestPlaceholders(mutableMapOf("appName" to "Konfig Test Debug"))
+            isMinifyEnabled = false
         }
         val staging by creating {
-            setApplicationIdSuffix("staging")
+            applicationIdSuffix = "staging"
             initWith(debug)
-            minifyEnabled(false)
-            manifestPlaceholders(mapOf("appName" to "Konfig Test Staging"))
+            isMinifyEnabled = false
+            setManifestPlaceholders(mutableMapOf("appName" to "Konfig Test Staging"))
             setMatchingFallbacks("release")
         }
         val release by getting {
             initWith(debug)
-            minifyEnabled(false)
-            manifestPlaceholders(mapOf("appName" to "Konfig"))
+            isMinifyEnabled = false
+            setManifestPlaceholders(mutableMapOf("appName" to "Konfig"))
             setMatchingFallbacks("release")
         }
     }
