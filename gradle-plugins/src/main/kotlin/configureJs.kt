@@ -26,14 +26,6 @@ fun Project.createKarmaTimeoutFile(testTimeout: Int) {
 }
 
 /**
- * @param tesTimeout in milliseconds
- */
-fun KotlinJsTargetDsl.targetJava(tesTimeout: Int = 10000, forBrowser: Boolean = true, forNodeJs: Boolean = true) {
-    enableTesting(tesTimeout, forBrowser, forNodeJs)
-}
-
-
-/**
  * @param timeout in milliseconds
  */
 fun KotlinJsTargetDsl.enableTesting(timeout: Int = 10000, forBrowser: Boolean = true, forNodeJs: Boolean = true) {
@@ -58,7 +50,7 @@ fun KotlinJsTargetDsl.application(testTimeout: Int? = null, withNodeJs: Boolean 
             outputFileName = "main.bundle.js"
             devServer = KotlinWebpackConfig.DevServer(
                 open = false,
-                contentBase = listOf(project.file("build/processedResources/js/main").absolutePath)
+                static = mutableListOf(project.file("build/processedResources/js/main").absolutePath)
             )
         }
     }

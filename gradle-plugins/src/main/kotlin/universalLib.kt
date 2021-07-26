@@ -81,7 +81,7 @@ fun KotlinJsTargetDsl.browserApp(testTimeout: Int? = null, config: (KotlinJsBrow
             outputFileName = "main.bundle.js"
             devServer = KotlinWebpackConfig.DevServer(
                 open = false,
-                contentBase = listOf(project.file("build/processedResources/js/main").absolutePath)
+                contentBase = mutableListOf(project.file("build/processedResources/js/main").absolutePath)
             )
         }
         if (config != null) config()
@@ -113,6 +113,7 @@ fun KotlinJsTargetDsl.library(testTimeout: Int? = 10000, config: (KotlinJsTarget
     browser()
     nodejs()
     if (testTimeout != null) enableTesting(testTimeout, forBrowser = true, forNodeJs = true)
+    if (config != null) config()
 }
 
 /**

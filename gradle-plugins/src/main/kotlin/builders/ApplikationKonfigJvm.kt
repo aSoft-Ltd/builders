@@ -1,6 +1,7 @@
 package builders
 
 import org.gradle.api.Project
+import org.gradle.api.file.DuplicatesStrategy
 import org.gradle.api.tasks.Copy
 import org.gradle.api.tasks.Exec
 import org.gradle.jvm.tasks.Jar
@@ -24,15 +25,18 @@ class ApplikationKonfigJvm(val project: Project, val konfig: Konfig, val mppTarg
         }
     }
 
-    private fun Project.createMppFatJarTask(target: KotlinJvmTarget) = tasks.create<Jar>("fatJar${target.name.capitalize()}${konfig.name.capitalize()}") {
-        group = "assemble"
-        archiveBaseName.value("${project.name}-${target.name}-${konfig.name}")
-        archiveVersion.value(this@createMppFatJarTask.version.toString())
-        dependsOn(konfig.generateKonfigFileTaskName(target))
-        with(tasks.findByName("${target.name}Jar") as Jar)
-        doFirst {
-            if (!konfig.values.containsKey("Main-Class"))
-                error("""
+    private fun Project.createMppFatJarTask(target: KotlinJvmTarget) =
+        tasks.create<Jar>("fatJar${target.name.capitalize()}${konfig.name.capitalize()}") {
+            group = "assemble"
+            duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+            archiveBaseName.value("${project.name}-${target.name}-${konfig.name}")
+            archiveVersion.value(this@createMppFatJarTask.version.toString())
+            dependsOn(konfig.generateKonfigFileTaskName(target))
+            with(tasks.findByName("${target.name}Jar") as Jar)
+            doFirst {
+                if (!konfig.values.containsKey("Main-Class"))
+                    error(
+                        """
                         |Please add "Main-Class" attribute to ${konfig.name} configuration
                         |example
                         |konfig {
@@ -40,21 +44,27 @@ class ApplikationKonfigJvm(val project: Project, val konfig: Konfig, val mppTarg
                         |        "Main-Class" to "tz.co.asoft.MainKt"
                         |    )
                         |}
-                    """.trimMargin())
-            manifest { attributes(konfig.values.mapValues { (_, v) -> v.toString() }) }
-            val runtime = configurations.getByName("${target.name}RuntimeClasspath")
-            val resDir = target.compilations.getByName("main").defaultSourceSet.resources
-            from(resDir)
-            from(runtime.map { if (it.isDirectory) konfig else project.zipTree(it) })
+                    """.trimMargin()
+                    )
+                manifest { attributes(konfig.values.mapValues { (_, v) -> v.toString() }) }
+                val runtime = configurations.getByName("${target.name}RuntimeClasspath")
+                val resDir = target.compilations.getByName("main").defaultSourceSet.resources
+                from(resDir)
+                from(runtime.map { if (it.isDirectory) konfig else project.zipTree(it) })
+            }
         }
-    }
 
-    private fun Project.createMppRunTask(target: KotlinJvmTarget) = tasks.create<Exec>("run${target.name.capitalize()}${konfig.name.capitalize()}") {
-        group = "run"
-        dependsOn("fatJar${target.name.capitalize()}${konfig.name.capitalize()}")
-        commandLine("java", "-jar", "${project.name}-${target.name}-${konfig.name}-${this@createMppRunTask.version}.jar")
-        workingDir("build/libs")
-    }
+    private fun Project.createMppRunTask(target: KotlinJvmTarget) =
+        tasks.create<Exec>("run${target.name.capitalize()}${konfig.name.capitalize()}") {
+            group = "run"
+            dependsOn("fatJar${target.name.capitalize()}${konfig.name.capitalize()}")
+            commandLine(
+                "java",
+                "-jar",
+                "${project.name}-${target.name}-${konfig.name}-${this@createMppRunTask.version}.jar"
+            )
+            workingDir("build/libs")
+        }
 
     private fun Project.createFatJarTask() = extensions.findByType<KotlinJvmProjectExtension>()?.apply {
         tasks.create<Jar>("fatJar${konfig.name.capitalize()}") {
@@ -62,10 +72,12 @@ class ApplikationKonfigJvm(val project: Project, val konfig: Konfig, val mppTarg
             archiveBaseName.value("${project.name}-${konfig.name}")
             archiveVersion.value(this@createFatJarTask.version.toString())
             dependsOn(konfig.generateKonfigFileTaskName(mppTarget))
+            duplicatesStrategy = DuplicatesStrategy.EXCLUDE
             with(tasks.findByName("jar") as Jar)
             doFirst {
                 if (!konfig.values.containsKey("Main-Class"))
-                    error("""
+                    error(
+                        """
                         |Please add "Main-Class" attribute to ${konfig.name} configuration
                         |example
                         |konfig {
@@ -73,7 +85,8 @@ class ApplikationKonfigJvm(val project: Project, val konfig: Konfig, val mppTarg
                         |        "Main-Class" to "tz.co.asoft.MainKt"
                         |    )
                         |}
-                    """.trimMargin())
+                    """.trimMargin()
+                    )
                 manifest { attributes(konfig.values.mapValues { (_, v) -> v.toString() }) }
                 val runtime = configurations.getByName("runtimeClasspath")
                 val resDir = target.compilations.getByName("main").defaultSourceSet.resources

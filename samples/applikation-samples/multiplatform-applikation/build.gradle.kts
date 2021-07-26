@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.application") version "4.1.3"
-    kotlin("multiplatform") version "1.5.0"
+    id("com.android.application") version "7.0.0-alpha01"
+    kotlin("multiplatform") version "1.5.20"
     id("tz.co.asoft.applikation")
 }
 
@@ -33,7 +33,7 @@ android {
 }
 
 group = "tz.co.asoft"
-version = "2020.2"
+version = "2021.2"
 
 applikation {
     common(
