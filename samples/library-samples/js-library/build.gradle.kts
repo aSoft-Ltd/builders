@@ -1,5 +1,5 @@
 plugins {
-    kotlin("js") version "1.5.0"
+    kotlin("js") version "1.5.21"
     id("tz.co.asoft.library")
 }
 

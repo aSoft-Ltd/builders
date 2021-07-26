@@ -34,7 +34,7 @@ kotlin {
         val main by getting {
             dependencies {
                 implementation(project(":todo-core"))
-                implementation(asoft("reakt-navigation", "0.0.8"))
+                implementation(asoft("reakt-navigation", "0.1.10"))
             }
         }
     }
