@@ -1,6 +1,7 @@
 # 1.3.41 : 2021.08.02
 
 - Defaulted back to kotlin 1.5.10
+- Added descriptive target names
 
 # 1.3.40 : 2021.07.26
 
