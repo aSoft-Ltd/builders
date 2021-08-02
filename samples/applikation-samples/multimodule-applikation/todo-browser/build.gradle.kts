@@ -34,7 +34,14 @@ kotlin {
         val main by getting {
             dependencies {
                 implementation(project(":todo-core"))
-                implementation(asoft("reakt-navigation", "0.1.10"))
+                implementation(asoft("reakt-core", "0.1.10"))
+            }
+        }
+
+        val test by getting {
+            dependencies {
+                api(asoft("expect-core", "0.0.40"))
+                api(asoft("test-coroutines", "1.1.32"))
             }
         }
     }

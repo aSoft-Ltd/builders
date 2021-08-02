@@ -1,5 +1,5 @@
 plugins {
-    kotlin("js") version "1.5.21"
+    kotlin("js") version "1.5.10"
     id("tz.co.asoft.library")
 }
 
@@ -9,6 +9,14 @@ version = lib_version
 
 kotlin {
     js(IR) { library() }
+
+    sourceSets {
+        val test by getting {
+            dependencies {
+                api(asoft("expect-core", "0.0.40"))
+            }
+        }
+    }
 }
 
 KotlinLibrary(

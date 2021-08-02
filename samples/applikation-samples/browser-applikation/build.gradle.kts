@@ -1,5 +1,5 @@
 plugins {
-    kotlin("js") version "1.5.21"
+    kotlin("js") version "1.5.10"
     id("tz.co.asoft.applikation")
 }
 
@@ -27,14 +27,24 @@ applikation {
 
 kotlin {
     js(IR) {
-        application()
+        browserApp(testTimeout = 10000)
     }
-}
 
-dependencies {
-    implementation("tz.co.asoft:applikation-runtime:0.0.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1")
-    implementation("org.jetbrains:kotlin-react:17.0.0-pre.129-kotlin-1.4.20")
-    implementation("org.jetbrains:kotlin-styled:5.2.0-pre.129-kotlin-1.4.20")
-    implementation("org.jetbrains:kotlin-react-dom:17.0.0-pre.129-kotlin-1.4.20")
+    sourceSets {
+        val main by getting {
+            dependencies {
+                implementation("tz.co.asoft:applikation-runtime:0.0.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1")
+                implementation("org.jetbrains:kotlin-react:17.0.0-pre.129-kotlin-1.4.20")
+                implementation("org.jetbrains:kotlin-styled:5.2.0-pre.129-kotlin-1.4.20")
+                implementation("org.jetbrains:kotlin-react-dom:17.0.0-pre.129-kotlin-1.4.20")
+            }
+        }
+
+        val test by getting {
+            dependencies {
+                implementation(asoft("expect-core", "0.0.40"))
+            }
+        }
+    }
 }
