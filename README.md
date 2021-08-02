@@ -11,6 +11,11 @@ In other words, it brings buildTypes with structured basic data to kotlin-multip
 Ever wanted to have different build types in your multiplatform application? You feel like most of the time your
 configurations during development time won't match those during deployment? `konfig` has you covered
 
+## Compatibility
+
+|Kotlin Version | Builders Version|
+|---------------|-----------------|
+| 1.5.10        | 1.3.41          |
 ## Samples
 
 In your build logic (gradle), you can inject values like this
@@ -329,7 +334,7 @@ plugins {
 
 After that you can just run `./gradlew publish` and you are all set
 
-[badge-maven]: https://img.shields.io/maven-central/v/tz.co.asoft/applikation-runtime/1.3.30?style=flat
+[badge-maven]: https://img.shields.io/maven-central/v/tz.co.asoft/applikation-runtime/1.3.40?style=flat
 
 [badge-mpp]: https://img.shields.io/badge/kotlin-multiplatform-blue?style=flat
 

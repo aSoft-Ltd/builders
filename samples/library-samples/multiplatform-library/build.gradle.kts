@@ -1,6 +1,6 @@
 plugins {
     id("com.android.library") version "7.1.0-alpha03"
-    kotlin("multiplatform") version "1.5.21"
+    kotlin("multiplatform") version "1.5.10"
     id("tz.co.asoft.library")
     id("io.codearte.nexus-staging") version "0.22.0"
     signing
@@ -18,6 +18,14 @@ kotlin {
     tvos()
     linuxX64()
     linuxArm64()
+
+    sourceSets {
+        val commonTest by getting {
+            dependencies {
+                api(asoft("expect-core", "0.0.40"))
+            }
+        }
+    }
 }
 
 configurePublishing {
