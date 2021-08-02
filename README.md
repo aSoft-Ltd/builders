@@ -11,6 +11,11 @@ In other words, it brings buildTypes with structured basic data to kotlin-multip
 Ever wanted to have different build types in your multiplatform application? You feel like most of the time your
 configurations during development time won't match those during deployment? `konfig` has you covered
 
+## Compatibility
+
+|Kotlin Version | Builders Version|
+|---------------|-----------------|
+| 1.5.10        | 1.3.41          |
 ## Samples
 
 In your build logic (gradle), you can inject values like this
