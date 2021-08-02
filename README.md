@@ -329,7 +329,7 @@ plugins {
 
 After that you can just run `./gradlew publish` and you are all set
 
-[badge-maven]: https://img.shields.io/maven-central/v/tz.co.asoft/applikation-runtime/1.3.30?style=flat
+[badge-maven]: https://img.shields.io/maven-central/v/tz.co.asoft/applikation-runtime/1.3.40?style=flat
 
 [badge-mpp]: https://img.shields.io/badge/kotlin-multiplatform-blue?style=flat
 
